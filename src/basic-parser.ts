@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as readline from "readline";
+import { ZodType } from "zod";
 
 /**
  * This is a JSDoc comment. Similar to JavaDoc, it documents a public-facing
@@ -14,7 +15,7 @@ import * as readline from "readline";
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values
  */
-export async function parseCSV(path: string): Promise<string[][]> {
+export async function parseCSV(path: string, schema: ZodType): Promise<string[][]> {
   // This initial block of code reads from a file in Node.js. The "rl"
   // value can be iterated over in a "for" loop. 
   const fileStream = fs.createReadStream(path);
@@ -31,7 +32,12 @@ export async function parseCSV(path: string): Promise<string[][]> {
   // More on this in class soon!
   for await (const line of rl) {
     const values = line.split(",").map((v) => v.trim());
-    result.push(values)
+    if (schema){
+      const parsed = schema.safeParse(values);
+      result.push(parsed);
+    }
+    else{
+      result.push(values);
+    }
   }
-  return result
-}
+  return result;
