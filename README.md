@@ -1,5 +1,7 @@
 # Sprint 1: TypeScript CSV
 
+GitHub Repo: https://github.com/cs0320-f25/typescript-csv-JonEw27
+
 ### Task C: Proposing Enhancement
 
 - #### Step 1: Brainstorm on your own.
