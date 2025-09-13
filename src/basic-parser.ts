@@ -32,13 +32,16 @@ export async function parseCSV(path: string, schema?: ZodType): Promise<any[]> {
   // More on this in class soon!
   for await (const line of rl) {
     const values = line.split(",").map((v) => v.trim());
+    // Check if schema is provided
     if (schema){
+      // Validate the values against the schema
       const parsed = schema.safeParse(values);
       if (!parsed.success){
         throw new Error(`Schema parsing failed: ${parsed.error}`);
       }
       result.push(parsed.data);
     }
+    // No schema provided, just push the values
     else{
       result.push(values);
     }
