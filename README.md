@@ -26,9 +26,27 @@
     
     Edge-Case/Enhancement List:
     1. Non-commma delimiters (Functionality) (Me/LLM)
+        - As a user of this CSV parser, I'm able to load in files that use different delimiters like semicolons or colons rather than just commas so that I can parse more
+        files.
+        - Acceptance Criteria:
+            - The parser is able to detect when different characters are being used as delimiters
+            - If there is a delimiter that is not supported then the user is notified.
     2. Type-casting (Extensibility) (Me/LLM)
+        - As a user of this CSV parser, I'm able to make it so that the parser will return strong data rather than just only strings.
+        - Acceptance Criteria:
+            - If no type-casting rules are given then everything stays as strings
+            - Values are converted if rules are provided during parsing
     3. New-line key strokes (Functionality) (LLM)
+        - As a user of this CSV parser, I want it to be able to handle different new-line key-strokes because of how different OS's have different ways of 
+        designating a new line.
+        - Acceptance Criteria:
+            - Files with different new line characters are parsed correctly (\n, \r)
+            - Mixed styles of new line characters in one file are handled properly
     4. Trailing delimiter case (Functionality) (LLM)
+        - As a user of this CSV parser, I want to make sure the parser is able to handled trailing delimiters in a row so that there's no confusion about missing entries.
+        - Acceptance Criteria:
+            - If the row ends with an extra delimiter, there is an empty string that's inserted in the array
+            - Row length matches header length
 
     My initial ideas were mostly centered around general formatting of a csv file, but when I asked the LLM, it went into some more system-sided edge cases and enhancements. This is shown by the LLM's interest in looking into different new-line key strokes across systems and different ways of encoding. Once I reprompted it a couple times to look into other edge-cases, it came back with the "trailing delimiter" idea and also the enhancement of figuring out what to do when there are opened but not closed quotes. 
 

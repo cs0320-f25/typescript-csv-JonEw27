@@ -15,7 +15,7 @@ import { ZodType } from "zod";
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values
  */
-export async function parseCSV(path: string, schema: ZodType): Promise<any[]> {
+export async function parseCSV(path: string, schema?: ZodType): Promise<any[]> {
   // This initial block of code reads from a file in Node.js. The "rl"
   // value can be iterated over in a "for" loop. 
   const fileStream = fs.createReadStream(path);

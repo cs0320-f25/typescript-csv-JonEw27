@@ -7,7 +7,7 @@ const EMPTY_LINES_CSV_PATH = path.join(__dirname, "../data/empty_lines.csv");
 const WHITESPACE_CSV_PATH = path.join(__dirname, "../data/whitespace.csv");
 
 test("parseCSV yields arrays", async () => {
-  const results = await parseCSV(PEOPLE_CSV_PATH, undefined)
+  const results = await parseCSV(PEOPLE_CSV_PATH)
   
   expect(results).toHaveLength(5);
   expect(results[0]).toEqual(["name", "age"]);
@@ -18,14 +18,14 @@ test("parseCSV yields arrays", async () => {
 });
 
 test("parseCSV yields only arrays", async () => {
-  const results = await parseCSV(PEOPLE_CSV_PATH, undefined)
+  const results = await parseCSV(PEOPLE_CSV_PATH)
   for(const row of results) {
     expect(Array.isArray(row)).toBe(true);
   }
 });
 
 test("", async () => {
-  const results = await parseCSV(NEW_PEOPLE_CSV_PATH, undefined)
+  const results = await parseCSV(NEW_PEOPLE_CSV_PATH)
   expect(results).toHaveLength(4);
   expect(results[0]).toEqual(["name", "age", "quote"]);
   expect(results[1]).toEqual(["Alice", "23", '"hello, nice to meet you"']);
@@ -33,8 +33,8 @@ test("", async () => {
   expect(results[3]).toEqual(["Professor", "40", '"wait, what is your name?"']);
 });
 
-test("parseCSV handles empty lines", async () => {
-  const results = await parseCSV(EMPTY_LINES_CSV_PATH, undefined)
+test("how does parseCSV handles empty lines", async () => {
+  const results = await parseCSV(EMPTY_LINES_CSV_PATH)
   expect(results).toHaveLength(5);
   expect(results[0]).toEqual(["name", "age"]);
   expect(results[1]).toEqual(["Bob", "23"]);
@@ -44,7 +44,7 @@ test("parseCSV handles empty lines", async () => {
 });
 
 test("parseCSV handles whitespace", async() => {
-  const results = await parseCSV(WHITESPACE_CSV_PATH, undefined)
+  const results = await parseCSV(WHITESPACE_CSV_PATH)
   expect(results).toHaveLength(3);
   expect(results[0]).toEqual(["name", "age"]);
   expect(results[1]).toEqual(["George", "293"]);
