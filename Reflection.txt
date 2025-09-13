@@ -1,0 +1,34 @@
+1. Correctness
+What makes a CSV parser “correct”? We're not asking for additional input-output pairs here, but fairly precise, natural-language descriptions. 
+Put another way, what kinds of general properties should your tests be checking about your CSV parser?
+
+For example, if we were writing a program to control a robot arm in an assembly plant, we might write properties like:
+the program never extends the arm beyond 5 feet; 
+the arm always returns to its neutral rest position when the system is shut down; or
+if sensors detect movement in the assembly area, movement immediately freezes.
+
+Answer: 
+The parser always outputs the same result for the same CSV
+The parser uses a schema to validate rows in the CSV
+The parser stops once all rows are parsed and there are no extra last rows in the CSV
+Cells are trimmed
+Empty cells are not done away with
+Each line corresponds to one row in the array that is outputted
+
+2. Random, On-Demand Generation
+Suppose we gave you a function that randomly produced CSV data on demand. You could then call this class from your testing code. 
+How might you use this source of random data to expand the power of your testing?
+
+Answer: 
+Inherently, a bunch of randomly produced CSV data would hopefully contain some edge cases that I haven’t thought of when writing the parser, 
+so just by feeding the parser many iterations of random CSV data, I should be able to test its robustness. 
+Additionally this would help in making sure that the parser correctly validates the passed-in CSV lines. 
+
+3. Overall experience, Bugs encountered and resolved
+In what ways did this sprint differ from prior programming assignments you’ve done? Did anything surprise you? 
+Did you encounter any bugs during your work on this sprint? If yes, what were they and how did you fix them? If not, how do you think that you managed to avoid them? 
+
+Answer: 
+This sprint differed from prior programming assignments I’ve done in how it was majority more conceptual and only required some small coding. 
+I think that overall the instructions were less specific than I was used to which required me to think a little bit harder about some of the aspects of functionality. 
+I did not encounter any bugs during my work besides the ones that I was attempting to check for :). 
